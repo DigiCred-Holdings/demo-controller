@@ -11,12 +11,9 @@ import { CredentialModule } from './credential/credential.module';
 import { VerificationModule } from './verification/verification.module';
 import { PingModule } from './ping/ping.module';
 import { OutOfBandModule } from './out_of_band/out_of_band.module';
-import { EventsGateway } from './events/events.gateway';
 import { MetadataModule } from './metadata/metadata.module';
 import { BasicMessagesModule } from './basicmessages/basicmessages.module';
-import { WorkflowModule } from './workflow/workflow.module';
 import { PostgresService } from './services/postgres.service';
-import { RedisService } from './services/redis.service';
 import {
   initDb,
   loadWorkflowsFromFile,
@@ -41,7 +38,6 @@ import { SisModule } from './sis/sis.module';
     PingModule,
     SisModule,
     BasicMessagesModule,
-    WorkflowModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -97,16 +93,6 @@ import { SisModule } from './sis/sis.module';
           },
         ],
       },
-      {
-        path: 'workflow',
-        module: WorkflowModule,
-        children: [
-          {
-            path: '',
-            module: WorkflowModule,
-          },
-        ],
-      },
     ]),
     MetadataModule,
     SvgModule,
@@ -115,9 +101,7 @@ import { SisModule } from './sis/sis.module';
   providers: [
     AppService,
     SisService,
-    EventsGateway,
     PostgresService,
-    RedisService,
     SvgService,
   ],
   controllers: [AppController],
