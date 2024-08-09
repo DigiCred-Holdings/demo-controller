@@ -4,10 +4,10 @@ import { VerificationController } from './verification.controller';
 import { VerificationService } from './verification.service';
 import { HttpModule } from '@nestjs/axios';
 import { ConfigModule } from '@nestjs/config';
-import { MetadataModule } from '../metadata/metadata.module'; // Import MetadataModule
+import { MetadataModule } from '../metadata/metadata.module'; 
 
 @Module({
-  imports: [HttpModule, ConfigModule, MetadataModule], // Add MetadataModule here
+  imports: [HttpModule, ConfigModule, MetadataModule], 
   controllers: [VerificationController],
   providers: [VerificationService],
 })
